@@ -8,6 +8,6 @@ docker build -t speexdecode ./
 
 # Run docker image - mounting data folder
 ```
-docker run -it -v $HOME/audiodata:/data speexdecode
+docker run -it --rm -v $HOME/audiodata:/data speexdecode
 speex_decode /data/input.speex /data/output.wav
 ```
