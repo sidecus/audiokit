@@ -38,7 +38,7 @@ RUN sh ./registerkaldi.sh
 # Copy kaldi wav-reverberate, speex_decode and set PATH
 WORKDIR /app
 COPY --from=pykaldi/pykaldi:latest /kaldi/src/featbin/wav-reverberate ./
-COPY --from=build /app/bin/speex_decode ./
+COPY --from=builder /app/bin/speex_decode ./
 ENV PATH="/app:${PATH}"
 
 # Usage: docker run -it -v $HOME/repos/audiodata:/audiodata speexdecode
