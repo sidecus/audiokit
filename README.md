@@ -1,13 +1,16 @@
-# speexdecode
-Docker image to decode Wechat speex files
+# audiokit
 
-# Build docker image
-```
-docker build -t speexdecode ./ 
+Audio toolkit with python
+
+## Build docker image
+
+```Bash
+docker build -t sidecus/audiokit ./ 
 ```
 
-# Run docker image - mounting data folder
-```
-docker run -it --rm -v $HOME/audiodata:/data speexdecode
+## Run docker image - mounting data folder
+
+```Bash
+docker run -it --rm -v $HOME/audiodata:/data sidecus/audiokit
 speex_decode /data/input.speex /data/output.wav
 ```

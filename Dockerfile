@@ -5,15 +5,12 @@ RUN sed -i s/archive.ubuntu.com/mirrors.aliyun.com/g /etc/apt/sources.list \
     && apt-get update
 RUN apt-get install -y libspeex-dev git gcc make
 WORKDIR /app
-COPY ./ ./
+COPY ./speex_decode/ ./
 RUN make
 
 # Ubuntu for running the decoder
-FROM ubuntu:latest
-RUN sed -i s/archive.ubuntu.com/mirrors.aliyun.com/g /etc/apt/sources.list \
-    && sed -i s/security.ubuntu.com/mirrors.aliyun.com/g /etc/apt/sources.list \
-    && apt-get clean \
-    && apt-get update
+FROM python:3.12.2-slim
+RUN apt-get clean && apt-get update
 RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-get install -y --no-install-recommends \
         libsndfile1-dev libspeex-dev libatlas3-base \
